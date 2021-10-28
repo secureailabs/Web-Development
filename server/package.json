@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "pm2 start  src/ecosystem.config.js --no-daemon",
+    "prod": "pm2 start src/ecosystem.config.js",
     "dev": "pm2-dev start src/ecosystem.config.js",
     "build": "ttsc"
   },
