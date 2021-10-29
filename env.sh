@@ -26,6 +26,6 @@ do
 
   # Append configuration property to JS file
   echo "export const $varname = \"$value\";" >> /app/client/build/_snowpack/env.js
-done < /app/client/build/.env
+done < /app/client/.env
 
 echo "" >> /app/client/build/_snowpack/env.js
