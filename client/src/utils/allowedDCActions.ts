@@ -13,8 +13,8 @@ const allowedDCActions = (
   userData: TDigitalContractInfo['userData']
 ): [boolean, boolean, boolean, boolean, boolean] => {
   // @ts-ignore we'll have to make 2 separate types or ask Shabana to standardize them
-  console.log(contract)
-  console.log(userData)
+  // console.log(contract)
+  // console.log(userData)
   // console.log(contract.DigitalContract.ProvisioningStatus.ProvisioningStatus == 0)
   // console.log(contract.DigitalContract.AzureTemplateGuid != undefined)
   // console.log(contract.DigitalContract.ResearcherOrganization == userData?.OrganizationGuid)
