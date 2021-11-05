@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "snowpack dev",
-    "build": "snowpack build",
+    "start": "export SNOWPACK_PUBLIC_COMMIT_ID=$(git rev-parse --short HEAD) || echo Couldn't load commit id, this only works on linux. && snowpack dev",
+    "build": "export SNOWPACK_PUBLIC_COMMIT_ID=$(git rev-parse --short HEAD) && snowpack build",
     "test": "web-test-runner \"src/**/*.test.tsx\"",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint . --ext .tsx"

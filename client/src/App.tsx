@@ -25,7 +25,9 @@ const App: React.FC<AppProps> = ({
       <div className="app__content">
         <AppRouter />
       </div>
-
+      <div className="version_footer">
+        <p>Version: 0.0.{import.meta.env.SNOWPACK_PUBLIC_COMMIT_ID}</p>
+      </div>
       <div className="legalfooter">
         <p>
           Private and Confidential. For Private Preview Purposes Only. Copyright
