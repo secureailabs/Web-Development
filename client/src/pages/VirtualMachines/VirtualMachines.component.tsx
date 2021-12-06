@@ -26,7 +26,17 @@ const VirtualMachines: React.FC<TVirtualMachinesProps> = ({
     TVirtualMachinesProps['getAllVirtualMachinesData']['']['ResearcherOrganization']
   >('Researcher');
   const [virtualMachineID, setVirtualMachineID] = useState<null | string>(null);
-
+  const vmCount = (host: 'Researcher' | 'Data Owner') => {
+    let count = 0;
+    Object.keys(getAllVirtualMachinesData).map((el) => {
+      if (getAllVirtualMachinesData[el].HostForVirtualMachines == host) {
+        count += Object.keys(
+          getAllVirtualMachinesData[el].VirtualMachinesAssociatedWithDc
+        ).length;
+      }
+    });
+    return count;
+  };
   return (
     <div
       className={`digitalcontracts ${
@@ -36,7 +46,10 @@ const VirtualMachines: React.FC<TVirtualMachinesProps> = ({
       <div className={`digitalcontracts__container `}>
         <div className="digitalcontractlist__listtitle">
           Secure Computation Nodes
-          <div className="digitalcontractlist__listtitle__options" style={{gridTemplateColumns: '1fr 1fr', maxWidth: '35rem'}}>
+          <div
+            className="digitalcontractlist__listtitle__options"
+            style={{ gridTemplateColumns: '1fr 1fr', maxWidth: '35rem' }}
+          >
             <button
               className={
                 'digitalcontractlist__listtitle__options__choice' +
@@ -44,7 +57,8 @@ const VirtualMachines: React.FC<TVirtualMachinesProps> = ({
               }
               onClick={() => setStageView('Researcher')}
             >
-              Researcher ({getAllVirtualMachinesData ? Object.entries(getAllVirtualMachinesData).filter(([key, value]) => value.HostForVirtualMachines == 'Researcher').length : ''})
+              Researcher (
+              {getAllVirtualMachinesData ? vmCount('Researcher') : '...'})
             </button>
             <button
               className={
@@ -53,7 +67,8 @@ const VirtualMachines: React.FC<TVirtualMachinesProps> = ({
               }
               onClick={() => setStageView('Data Owner')}
             >
-              Data Owner ({getAllVirtualMachinesData ? Object.entries(getAllVirtualMachinesData).filter(([key, value]) => value.HostForVirtualMachines == 'Researcher').length : ''})
+              Data Owner (
+              {getAllVirtualMachinesData ? vmCount('Data Owner') : '...'})
             </button>
           </div>
         </div>
